@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PICDIT</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <main>
+            <section class="hero page-section" id="home" aria-labelledby="home-title">
+            <div class="grain"></div>
+            <div class="hero-frame">
+                <p class="eyebrow">PICDIT / portraits / events / creative shoots</p>
+                <h1 id="home-title">Pictures with pulse.</h1>
+                <p class="hero-copy">Bold portraits, clean event coverage, and creative photo sessions with a bright editorial feel.</p>
+                <div class="hero-actions">
+                <a class="primary-button" href="#portfolio">View Work</a>
+                <a class="secondary-button" href="#contact">Book a Shoot</a>
+                </div>
+            </div>
+
+            <div class="floating-board" aria-label="Featured photo layout">
+                <article class="polaroid hero-polaroid one">
+                <div class="photo portrait-a"></div>
+                <span>Portrait Study</span>
+                </article>
+                <article class="polaroid hero-polaroid two">
+                <div class="photo portrait-b"></div>
+                <span>City Light</span>
+                </article>
+                <div class="lens-orbit" aria-hidden="true">
+                <span></span>
+                <span></span>
+                </div>
+            </div>
+            </section>
+
+            <section class="intro-strip" aria-label="Studio highlights">
+            <div>
+                <strong>36</strong>
+                <span>Selected frames</span>
+            </div>
+            <div>
+                <strong>4K</strong>
+                <span>Edited photos</span>
+            </div>
+            <div>
+                <strong>24h</strong>
+                <span>Preview gallery</span>
+            </div>
+            </section>
+
+            <section class="portfolio page-section" id="portfolio" aria-labelledby="portfolio-title">
+            <div class="section-heading">
+                <p class="eyebrow">Portfolio</p>
+                <h2 id="portfolio-title">Recent frames, styled like fresh prints.</h2>
+                <p>Portraits, events, fashion, lifestyle, and editorial work arranged with a tactile photo-wall feel.</p>
+            </div>
+
+            <div class="polaroid-grid">
+                <article class="polaroid tilt-left">
+                <div class="photo gallery-one"></div>
+                <span>Editorial</span>
+                </article>
+                <article class="polaroid tall">
+                <div class="photo gallery-two"></div>
+                <span>Street</span>
+                </article>
+                <article class="polaroid tilt-right">
+                <div class="photo gallery-three"></div>
+                <span>Wedding</span>
+                </article>
+                <article class="polaroid">
+                <div class="photo gallery-four"></div>
+                <span>Fashion</span>
+                </article>
+            </div>
+            </section>
+
+            <section class="pricing page-section" id="pricing" aria-labelledby="pricing-title">
+            <div class="section-heading light">
+                <p class="eyebrow">Prices</p>
+                <h2 id="pricing-title">Pick the shoot that fits the story.</h2>
+                <p>Clear packages for portraits, events, and creative campaigns, presented like a studio rate card.</p>
+            </div>
+
+            <div class="price-strip">
+                <article class="price-card">
+                <div class="price-photo still-one">
+                    <span>01</span>
+                </div>
+                <h3>Portrait Session</h3>
+                <p>1 location, 1 outfit, 20 edited images.</p>
+                <strong>R850</strong>
+                </article>
+                <article class="price-card featured">
+                <div class="price-photo still-two">
+                    <span>02</span>
+                </div>
+                <h3>Event Coverage</h3>
+                <p>Up to 3 hours, 80 edited images, preview gallery.</p>
+                <strong>R2,400</strong>
+                </article>
+                <article class="price-card">
+                <div class="price-photo still-three">
+                    <span>03</span>
+                </div>
+                <h3>Creative Campaign</h3>
+                <p>Concept planning, 2 looks, 45 edited images.</p>
+                <strong>R3,800</strong>
+                </article>
+            </div>
+            </section>
+
+            <section class="about page-section" id="about" aria-labelledby="about-title">
+            <div class="about-card">
+                <div class="stacked-prints" aria-hidden="true">
+                <div class="print print-back"></div>
+                <div class="print print-front"></div>
+                </div>
+                <div class="about-copy">
+                <p class="eyebrow">About</p>
+                <h2 id="about-title">PICDIT keeps photography sharp, warm, and alive.</h2>
+                <p>Clean direction, confident posing, and edits that keep skin, colour, and atmosphere feeling real.</p>
+                <div class="tag-row">
+                    <span>Portraits</span>
+                    <span>Pricing</span>
+                    <span>Events</span>
+                    <span>Editorial</span>
+                </div>
+                </div>
+            </div>
+            </section>
+
+            <section class="contact page-section" id="contact" aria-labelledby="contact-title">
+            <div class="section-heading">
+                <p class="eyebrow">Contact</p>
+                <h2 id="contact-title">Ready to plan a shoot?</h2>
+            </div>
+
+            <!-- Calendly embed -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/macxho" style="min-width:320px;height:400px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+            <form class="contact-slip">
+                <label>
+                Name
+                <input type="text" name="name" placeholder="Your name">
+                </label>
+                <label>
+                Shoot type
+                <select name="shoot">
+                    <option>Portrait session</option>
+                    <option>Wedding / event</option>
+                    <option>Creative pricing package</option>
+                    <option>Creative campaign</option>
+                </select>
+                </label>
+                <label>
+                Message
+                <textarea name="message" rows="4" placeholder="Tell me what you want to make."></textarea>
+                </label>
+                <button type="submit">Send Inquiry</button>
+            </form>
+            </section>
+        </main>
+
+        <nav class="camera-nav" aria-label="Primary navigation">
+            <div class="camera-shell">
+            <a class="brand-mark" href="#home" aria-label="PICDIT home">pd<span></span></a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home">
+                <span class="nav-icon focus-icon"></span>
+                <span>Home</span>
+                </a>
+                <a href="#portfolio" class="nav-link" data-section="portfolio">
+                <span class="nav-icon camera-icon"></span>
+                <span>Portfolio</span>
+                </a>
+                <a href="#pricing" class="nav-link" data-section="pricing">
+                <span class="nav-icon film-icon"></span>
+                <span>Prices</span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                <span class="nav-icon person-icon"></span>
+                <span>About</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                <span class="nav-icon mail-icon"></span>
+                <span>Contact</span>
+                </a>
+            </div>
+            </div>
+        </nav>
+
+        <script src="script.js"></script>
+    </body>
+</html>
