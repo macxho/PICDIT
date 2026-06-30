@@ -68,3 +68,30 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(s => observer.observe(s));
+
+// ── Web3Forms ─────────────────────────────────────────
+const form = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+
+  const res = await fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  });
+
+  const json = await res.json();
+
+  status.style.display = 'block';
+  if (json.success) {
+    status.style.color = 'green';
+    status.textContent = "Message sent. I'll be in touch soon.";
+    form.reset();
+  } else {
+    status.style.color = 'red';
+    status.textContent = 'Something went wrong. Try again.';
+  }
+});
