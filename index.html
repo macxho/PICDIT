@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PICDIT</title>
+        <link rel="icon" type="image/png" href="images/favicon.png">
         <link rel="stylesheet" href="styles.css">
     </head>
 
@@ -61,19 +62,19 @@
 
             <div class="polaroid-grid">
                 <article class="polaroid tilt-left">
-                <div class="photo gallery-one"></div>
+                <img src="images/editorial.jpeg" class="photo gallery-one"></img>
                 <span>Editorial</span>
                 </article>
                 <article class="polaroid tall">
-                <div class="photo gallery-two"></div>
+                <img src="images/street.jpeg" class="photo gallery-two"></img>
                 <span>Street</span>
                 </article>
                 <article class="polaroid tilt-right">
-                <div class="photo gallery-three"></div>
+                <img src="images/wedding.jpeg" class="photo gallery-three"></img>
                 <span>Wedding</span>
                 </article>
                 <article class="polaroid">
-                <div class="photo gallery-four"></div>
+                <img src="images/fashion.jpeg" class="photo gallery-four"></img>
                 <span>Fashion</span>
                 </article>
             </div>
@@ -140,11 +141,11 @@
                 <h2 id="contact-title">Ready to plan a shoot?</h2>
             </div>
 
-            <!-- Calendly embed -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/macxho" style="min-width:320px;height:400px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <form class="contact-slip" id="contact-form">
+                <input type="hidden" name="access_key" value="48c884f0-8d20-4c85-853b-56c799aeb79d">
+                <input type="hidden" name="subject" value="New shoot inquiry — PicDit">
+                <input type="checkbox" name="botcheck" style="display:none;">
 
-            <form class="contact-slip">
                 <label>
                 Name
                 <input type="text" name="name" placeholder="Your name">
@@ -194,6 +195,12 @@
             </div>
             </div>
         </nav>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Close">&#x2715;</button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        </div>
 
         <script src="script.js"></script>
     </body>

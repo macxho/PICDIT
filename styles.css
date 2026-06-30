@@ -202,6 +202,13 @@ h2 {
   text-transform: uppercase;
 }
 
+.polaroid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
 .photo {
   min-height: 250px;
   background-color: #cfc5b4;
@@ -242,11 +249,11 @@ h2 {
 }
 
 .portrait-a {
-  --art: linear-gradient(135deg, #111 0 22%, #eee 22% 38%, #b8b8b8 38% 55%, #ef2f2f 55% 66%, #252525 66%);
+  --art: url('images/portraitstudy.jpeg');
 }
 
 .portrait-b {
-  --art: linear-gradient(160deg, #fffdf7 0 20%, #1f1f1f 20% 46%, #ffd447 46% 58%, #d7d1c1 58% 78%, #e32929 78%);
+  --art: url('images/citylight.jpeg');
 }
 
 .lens-orbit {
@@ -432,15 +439,15 @@ h2 {
 }
 
 .still-one {
-  --art: linear-gradient(135deg, #111 0 32%, #ffd447 32% 42%, #d8d0bd 42% 72%, #e32929 72%);
+  --art: url('images/portraitsession.jpeg');
 }
 
 .still-two {
-  --art: linear-gradient(145deg, #fffdf7 0 26%, #242424 26% 54%, #e32929 54% 62%, #bcb4a7 62%);
+  --art: url('images/eventcoverage.jpeg');
 }
 
 .still-three {
-  --art: linear-gradient(155deg, #1b1b1b 0 20%, #ded5c6 20% 58%, #ffd447 58% 70%, #151515 70%);
+  --art: url('images/creativecampaign.jpeg');
 }
 
 
@@ -524,12 +531,12 @@ h2 {
 }
 
 .print-back {
-  --art: linear-gradient(135deg, #151515 0 30%, #f4eee1 30% 55%, #ffd447 55% 65%, #333 65%);
+  --art: url('images/about1.jpeg');
   transform: rotate(-8deg) translate(-26px, 30px);
 }
 
 .print-front {
-  --art: linear-gradient(145deg, #f6f0e4 0 24%, #1f1f1f 24% 46%, #e32929 46% 56%, #fffdf7 56%);
+  --art: url('images/about2.jpeg');
   transform: rotate(5deg) translate(34px, -6px);
 }
 
@@ -896,6 +903,7 @@ h2 {
     width: 21px;
     height: 18px;
   }
+
 @media (max-width: 640px) {
   .page-section {
     min-height: auto;
@@ -958,5 +966,45 @@ h2 {
   .nav-link {
     min-width: 0;
   }
+}}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
 }
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.6rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 180ms ease;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
 }

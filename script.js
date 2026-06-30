@@ -1,69 +1,70 @@
-﻿const links = [...document.querySelectorAll(".nav-link")];
-const sections = links
-  .map((link) => document.getElementById(link.dataset.section))
-  .filter(Boolean);
+﻿// ── Lightbox ──────────────────────────────────────────
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
 
-const setActive = (id) => {
-  links.forEach((link) => {
-    link.classList.toggle("active", link.dataset.section === id);
+document.querySelectorAll('.polaroid-grid .polaroid img').forEach(img => {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '';
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
   });
-};
-
-const updateActiveFromScroll = () => {
-  const marker = window.innerHeight * 0.52;
-  let current = sections[0]?.id;
-
-  sections.forEach((section) => {
-    const box = section.getBoundingClientRect();
-    if (box.top <= marker && box.bottom >= marker) {
-      current = section.id;
-    }
-  });
-
-  if (current) {
-    setActive(current);
-  }
-};
-
-links.forEach((link) => {
-  link.addEventListener("click", () => setActive(link.dataset.section));
 });
 
-window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
-window.addEventListener("resize", updateActiveFromScroll);
-updateActiveFromScroll();
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+}
 
-document.querySelector(".contact-slip")?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const button = event.currentTarget.querySelector("button");
-  button.textContent = "Inquiry Ready";
-  setTimeout(() => {
-    button.textContent = "Send Inquiry";
-  }, 1800);
+lightboxClose.addEventListener('click', closeLightbox);
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
 });
 
-const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
+// ── Pricing → Contact ─────────────────────────────────
+const shootSelect = document.querySelector('select[name="shoot"]');
 
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
-    });
+document.querySelectorAll('.price-card').forEach(card => {
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => {
+    const packageName = card.querySelector('h3').textContent.trim();
 
-    const json = await res.json();
+    const optionMap = {
+      'Portrait Session': 'Portrait session',
+      'Event Coverage': 'Wedding / event',
+      'Creative Campaign': 'Creative campaign'
+    };
 
-    status.style.display = 'block';
-    if (json.success) {
-      status.style.color = 'green';
-      status.textContent = 'Message sent. I\'ll be in touch soon.';
-      form.reset();
-    } else {
-      status.style.color = 'red';
-      status.textContent = 'Something went wrong. Try again.';
+    const matchingOption = optionMap[packageName];
+    if (matchingOption) {
+      Array.from(shootSelect.options).forEach((opt, i) => {
+        if (opt.text === matchingOption) shootSelect.selectedIndex = i;
+      });
+    }
+
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ── Active nav on scroll ───────────────────────────────
+const sections = document.querySelectorAll('.page-section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[data-section="${entry.target.id}"]`);
+      if (active) active.classList.add('active');
     }
   });
+}, { threshold: 0.4 });
+
+sections.forEach(s => observer.observe(s));
